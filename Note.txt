@@ -1,0 +1,5 @@
+Apart from repository related workflow triggers,
+1. workflow_dispatch: Manual Trigger
+2. repository_dispatch: API Trigger
+3. schedule: Runs On Schedule Basis
+4. workflow_call: Triggered By Another Workflow

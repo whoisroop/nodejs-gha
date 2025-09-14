@@ -1,0 +1,17 @@
+name: Testing Workflow
+on: push
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub Checkout
+        # Use Actions: (Replaces run: --> uses:)
+        uses: actions/checkout@v5
+      - name: Node Setup
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm test
