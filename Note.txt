@@ -33,3 +33,38 @@ echo "MYTOKEN=xxx" >> $GITHUB_ENV
 
 Purpose: prepend directories to PATH for subsequent steps.
 echo "/opt/mytool/bin" >> $GITHUB_PATH
+
+# Event  Trigger:
+Activity (types): Which variation of event should trigger the event, example: pull_request - openned, edited, closed, ...
+```
+on:
+    pull_request:
+        types:
+            - opened
+```
+
+Filter: Define the trigger for a specific branch / directory / file, example: push - (Options To Declare, Not Literals) all-branches, specific branch, specific path, specific file
+Supported for pull-requests, push, workflow_call
+PUSH & PULL REQUESTS: on.push/pull_request.<branches/tags/branches-ignore/tags-ignore>
+PUSH & PULL REQUESTS: on.push/pull_request.<paths/paths-ignore>
+```
+on:
+    push:
+        branches:
+            - main
+            - 'feature/**'  (**: Zero or multiple directories, in this context /'es)
+        tags:
+            - 'release/*'
+        paths-ignore:
+            - '.github/workflows/*'
+```
+
+NOTE: Pull request from forked repositories requires manual approval for the first time for the contributor.
+
+# Skip Workflows:
+Commit message contains '[skip ci / ci skip / no ci / skip actions / actions skip]'
+Example: 'Added Comments [skip ci]'
+
+*** Conditional Jobs & Steps ***
+if conditional: Jobs & Steps
+continue-on-error: Steps (Ignore Errors)
