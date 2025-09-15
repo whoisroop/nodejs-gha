@@ -1,5 +1,35 @@
-Apart from repository related workflow triggers,
+The workflow file consists of:
+
+name: <Name Of WorkFlow>
+on: <Trigger>
+jobs:
+    <JOB NAME>:
+        runs-on: <Runner>
+        steps:
+            - name: <STEP NAME>
+              run: <Command>
+
+
+Workflow triggers, apart from repository related (push, pull-requests, ...):
 1. workflow_dispatch: Manual Trigger
 2. repository_dispatch: API Trigger
 3. schedule: Runs On Schedule Basis
 4. workflow_call: Triggered By Another Workflow
+
+Expression & Context Objects:
+Context objects: A context object is a special variable GitHub makes available inside workflows. They hold information about the workflow, runner, jobs, events, and even secrets.
+The rendering of the context object / expressions occurs prior execution.
+
+Example:- jobs.steps.run = echo "${{ github }}"
+The actions controller, 
+
+github, secrets, env, needs, runner, matrix, Condition if: always(), success() / failure() 
+
+GitHub Actions Output & Environment:
+echo "color=YELLOW" >> $GITHUB_OUTPUT
+run: echo "${{ steps.<STEP NAME>.outputs.color }}"
+
+echo "MYTOKEN=xxx" >> $GITHUB_ENV
+
+Purpose: prepend directories to PATH for subsequent steps.
+echo "/opt/mytool/bin" >> $GITHUB_PATH

@@ -1,11 +1,11 @@
-name: Testing Workflow
+# Use Actions: (Replaces run: --> uses:)
+name: LTD Workflow
 on: push
 jobs:
-  test-job:
+  lint-test-deploy-job:
     runs-on: ubuntu-latest
     steps:
       - name: GitHub Checkout
-        # Use Actions: (Replaces run: --> uses:)
         uses: actions/checkout@v5
       - name: Node Setup
         uses: actions/setup-node@v5
@@ -13,5 +13,9 @@ jobs:
           node-version: '20'
       - name: Install Dependencies
         run: npm ci
-      - name: Run Tests
-        run: npm test
+      - name: Run Linter
+        run: npm run lint
+      - name: Run Test
+        run: npm run test
+      - name: Deploy
+        run: echo "Deploying to CLOUD..."
