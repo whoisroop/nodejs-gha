@@ -10,4 +10,4 @@ runs:
     - name: Print Hosts
       shell: bash
       run: |
-        echo "yq .all.hosts | keys" ./${{ inputs.file }}
+        yq '.all.hosts | keys' ./${{ inputs.file }}
