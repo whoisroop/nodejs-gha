@@ -7,15 +7,7 @@ jobs:
     steps:
       - name: GitHub Checkout
         uses: actions/checkout@v5
-      - name: Node Setup
-        uses: actions/setup-node@v5
+      - name: Print Hosts
+        uses: ./.github/actions/output-action
         with:
-          node-version: '20'
-      - name: Install Dependencies
-        run: npm ci
-      - name: Run Linter
-        run: npm run lint
-      - name: Run Test
-        run: npm run test
-      - name: Deploy
-        run: echo "Deploying to CLOUD..."
+          file: 'inventory.yaml'

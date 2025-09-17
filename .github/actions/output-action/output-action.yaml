@@ -1,0 +1,13 @@
+name: Output Action
+description: An action that parses YAML to output hosts.
+inputs:
+  file: 
+    description: Input YAML File.
+    required: true
+runs:
+  using: "composite"
+  steps: 
+    - name: Print Hosts
+      run: |
+      echo "yq .all.hosts | keys" ./${{ inputs.file }}
+
