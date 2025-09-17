@@ -3,10 +3,13 @@ description: An action that parses YAML to output hosts.
 inputs:
   file: 
     description: Input YAML File.
-    required: true
+    required: false
+    default: inventory.yaml
 runs:
   using: "composite"
   steps: 
+    - name: Git Checkout
+      uses: actions/checkout@v5
     - name: Print Hosts
       shell: bash
       run: |
