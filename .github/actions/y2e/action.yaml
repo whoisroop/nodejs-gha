@@ -1,0 +1,14 @@
+name: YAML TO ENVIRONMENT
+description: An action that parses YAML to output hosts.
+inputs:
+  yaml-directory:
+    description: YAML Directory To Convert Files To Environment Variables.
+    required: True
+    default: './'
+runs:
+  using: "composite"
+  steps: 
+    - name: STEP
+      shell: bash
+      run: |
+        echo "Hello World"
