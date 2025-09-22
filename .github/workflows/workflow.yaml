@@ -33,8 +33,9 @@ jobs:
 
       - name: Render Values
         run: |
-          envsubst <./render-me.yaml> rendered.yaml
-          cat ./rendered.yaml
+          python3 ./scripts/rendering.py --input-dir ./rendering-templates --output-dir ./output
+          ls -lart ./output
+          cat ./output/*.yaml
 
       - name: Print ENV
         run: |

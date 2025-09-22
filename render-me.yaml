@@ -1,2 +1,0 @@
-application: $ALL_CHILDREN_FRONTEND
-load-balancer: $ALL_CHILDREN_INGRESS
