@@ -1,11 +1,25 @@
 # Use Actions: (Replaces run: --> uses:)
-name: LTD Workflow
-on: push
+name: YQ Workflow
+on: ['push', 'workflow_dispatch']
 jobs:
   lint-test-deploy-job:
     runs-on: ubuntu-latest
     steps:
       - name: GitHub Checkout
         uses: actions/checkout@v5
-      - name: Print Hosts
-        uses: ./.github/actions/output-action
+      - name: YAML to Environment
+        id: y2e
+        uses: dcarbone/yaml-to-env-action@v1.1
+        with:
+          yaml-file: ./inventory.yaml
+      - name: Print Environment
+        run: |
+          echo "${{ env.ALL_CHILDREN_MASTER }}"
+      - name: Print Outputs
+        run:
+          echo "${{ steps.y2e.outputs.var-count }}"
+          echo "${{ steps.y2e.outputs.yaml-keys }}"
+          echo "${{ steps.y2e.outputs.env-names }}"
+      - name: Print ENV
+        run: |
+          printenv

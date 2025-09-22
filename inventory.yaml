@@ -1,28 +1,4 @@
-# Sample Ansible Inventory (YAML format)
-
 all:
-  hosts:
-    web-server-1:
-      ansible_host: 192.168.1.10
-      ansible_user: ubuntu
-      ansible_port: 22
-      roles:
-        - web
-        - app
-    db-server-1:
-      ansible_host: 192.168.1.20
-      ansible_user: centos
-      ansible_port: 22
-      roles:
-        - database
   children:
-    web:
-      hosts:
-        web-server-1:
-    database:
-      hosts:
-        db-server-1:
-  vars:
-    app_port: 8080
-    db_port: 5432
-    environment: production
+    master: 10.10.10.10
+    worker: 10.10.10.20

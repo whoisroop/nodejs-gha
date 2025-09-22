@@ -1,16 +1,9 @@
 name: Output Action
 description: An action that parses YAML to output hosts.
-inputs:
-  file: 
-    description: Input YAML File.
-    required: false
-    default: inventory.yaml
 runs:
   using: "composite"
   steps: 
-    - name: Git Checkout
-      uses: actions/checkout@v5
-    - name: Print Hosts
+    - name: STEP
       shell: bash
       run: |
-        yq '.all.hosts | keys' ./${{ inputs.file }}
+        echo "Hello World"
