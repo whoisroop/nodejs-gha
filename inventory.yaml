@@ -1,4 +1,0 @@
-all:
-  children:
-    master: 10.10.10.10
-    worker: 10.10.10.20

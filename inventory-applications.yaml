@@ -1,0 +1,4 @@
+all:
+  children:
+    frontend: v1.0.0
+    backend: v2.0.0
