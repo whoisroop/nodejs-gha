@@ -1,9 +1,0 @@
-name: Output Action
-description: An action that parses YAML to output hosts.
-runs:
-  using: "composite"
-  steps: 
-    - name: STEP
-      shell: bash
-      run: |
-        echo "Hello World"

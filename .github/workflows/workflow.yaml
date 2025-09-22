@@ -7,11 +7,20 @@ jobs:
     steps:
       - name: GitHub Checkout
         uses: actions/checkout@v5
+
+      - name: Prepare YAML File
+        run: |
+          for f in ./*.yaml; do
+            echo -e "\n---\n" >> combined.yaml
+            cat $f >> combined.yaml
+          done
+
       - name: YAML to Environment
         id: y2e
         uses: dcarbone/yaml-to-env-action@v3.0.1
         with:
-          yaml-file: ./inventory.yaml
+          yaml-file: ./combined.yaml
+
       - name: Print Environment
         run: |
           echo "${{ env.ALL_CHILDREN_MASTER }}"
@@ -20,6 +29,7 @@ jobs:
           echo "${{ steps.y2e.outputs.var-count }}"
           echo "${{ steps.y2e.outputs.yaml-keys }}"
           echo "${{ steps.y2e.outputs.env-names }}"
+          
       - name: Print ENV
         run: |
           printenv
