@@ -1,2 +1,2 @@
-application: {{ env.ALL_CHILDREN_FRONTEND }}
-load-balancer: {{ env.ALL_CHILDREN_INGRESS }}
+application: "{{ all.children.frontend }}"
+load-balancer: {{ all.children.backend }}
